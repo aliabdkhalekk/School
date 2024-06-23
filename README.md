@@ -2,19 +2,19 @@
 School Teacher CRUD Demo
 =
 This is a simple Spring Boot application  CRUD (Create, Read, Update, Delete) operation for managing teachers and their addresses.
-
+<br />
 Techonlogies Used 
 -
--Java
--Spring Boot
--Spring Data Jpa 
--MySql
+-Java <br />
+-Spring Boot <br />
+-Spring Data Jpa <br />
+-MySql <br />
 -Log4j2 
 
 To Start you need to Clone the repository 
 -
 git clone https://github.com/aliabdkhalekk/School.git
-
+<br />
 configration for database 
 you will find in application.properties in src/main/resources 
 
@@ -26,17 +26,18 @@ before you run the application first run Mysql script in which workbench you use
 
 API Endpoints 
 -
-you will find the collection of all this endpoints in Postman file 
--GET /teachers: Retrieve all teachers.
--GET /teachers/{id}: Retrieve a specific teacher by ID.
--POST /teachers: Create a new teacher.
--PUT /teachers/{id}: Update an existing teacher by ID.
--DELETE /teachers/{id}: Delete a teacher by ID.
+you will find the collection of all this endpoints in Postman file <br />
+
+-GET /teachers: Retrieve all teachers.<br />
+-GET /teachers/{id}: Retrieve a specific teacher by ID.<br />
+-POST /teachers: Create a new teacher.<br />
+-PUT /teachers/{id}: Update an existing teacher by ID.<br />
+-DELETE /teachers/{id}: Delete a teacher by ID.<br />
 
 Logging 
 - 
-Used in this project Log4j2 
-you can find logs file in log- app.log
+Used in this project Log4j2 <br />
+you can find logs file in log- app.log <br />
 
 
 
