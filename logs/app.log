@@ -19,3 +19,4 @@
 2024-06-23 15:56:58 INFO  com.luv2code.springboot.cruddemo.CruddemoApplication - Started CruddemoApplication in 6.518 seconds (process running for 7.945)
 2024-06-23 15:57:33 INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
 2024-06-23 15:57:33 INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 2 ms
+2024-06-23 16:11:35 INFO  org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
