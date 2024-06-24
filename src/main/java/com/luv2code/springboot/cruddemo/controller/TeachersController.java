@@ -1,16 +1,13 @@
 package com.luv2code.springboot.cruddemo.controller;
 
-import com.luv2code.springboot.cruddemo.dao.TeacherRepository;
-import com.luv2code.springboot.cruddemo.entity.Address;
 import com.luv2code.springboot.cruddemo.entity.Teachers;
+import com.luv2code.springboot.cruddemo.service.TeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.rest.webmvc.ResourceNotFoundException;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import java.util.Optional;
-import java.util.Set;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/teacherses")
@@ -18,58 +15,43 @@ public class TeachersController {
     private static final Logger logger = LogManager.getLogger(TeachersController.class);
 
     @Autowired
-    private TeacherRepository teachersRepository;
+    private TeacherService teacherService;
 
-//
-//    @GetMapping
-//    public List<Teachers> getAllTeachers() {
-//        return teachersRepository.findAll();
-//    }
-@GetMapping("/{id}")
-public ResponseEntity<Teachers> getTeacherById(@PathVariable int id) {
-    Teachers teacher = teachersRepository.findById(id)
-            .orElseThrow(() -> new ResourceNotFoundException("Teacher not found with id: " + id));
-    return ResponseEntity.ok(teacher);
-}
-    @DeleteMapping("/{id}")
-    public void deleteTeacherById(@PathVariable int id) {
-        teachersRepository.deleteById(id);
+
+    @GetMapping
+    public List<Teachers> getAllTeachers() {
+        return teacherService.findAll();
     }
-//    @PostMapping
-//    public Teachers createTeachers(@RequestBody Teachers teachers) {
-//        return teachersRepository.save(teachers);
-//    }
-    @PutMapping("/{id}")
-    public Teachers updateTeacher(@PathVariable int id, @RequestBody Teachers teacherDetails) {
-        // Fetch the existing teacher
-        Teachers existingTeacher = teachersRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Teacher not found with id: " + id));
 
-        // Update the teacher's details
-        existingTeacher.setFirstName(teacherDetails.getFirstName());
-        existingTeacher.setLastName(teacherDetails.getLastName());
-        existingTeacher.setAge(teacherDetails.getAge());
-
-        // Handle addresses
-        Set<Address> updatedAddresses = teacherDetails.getAddresses();
-        if (updatedAddresses != null) {
-            for (Address address : updatedAddresses) {
-                if (address.getId() != 0) {
-                    // Existing address, find and update
-                    for (Address existingAddress : existingTeacher.getAddresses()) {
-                        if (existingAddress.getId() == address.getId()) {
-                            existingAddress.setStreetName(address.getStreetName());
-                            existingAddress.setCountry(address.getCountry());
-                            existingAddress.setGovernment(address.getGovernment());
-                        }
-                    }
-                } else {
-                    existingTeacher.addAddress(address);
-                }
-            }
+    @GetMapping("/{id}")
+    public Teachers getTeacherById(@PathVariable int id) {
+        Teachers teacher = teacherService.findById(id);
+        if (teacher == null) {
+            throw new RuntimeException("Teacher not found" + id);
         }
+        return teacher;
+    }
 
-        // Save the updated teacher
-        return teachersRepository.save(existingTeacher);
+    @DeleteMapping("/{id}")
+    public String deleteTeacherById(@PathVariable int id) {
+        Teachers teacher = teacherService.findById(id);
+        if (teacher == null) {
+            throw new RuntimeException("Teacher not found" + id);
+        }
+        teacherService.deleteById(id);
+        return "Teacher deleted ID : " + id;
+    }
+
+    @PostMapping
+    public Teachers createTeachers(@RequestBody Teachers teachers) {
+        return teacherService.save(teachers);
+    }
+
+
+    @PutMapping
+    public Teachers updateTeacher(@RequestBody Teachers teacher) {
+        Teachers teachers = teacherService.save(teacher);
+
+        return teachers;
     }
 }
