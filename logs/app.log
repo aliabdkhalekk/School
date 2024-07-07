@@ -1,6 +1,6 @@
-2024-06-23 15:56:52 INFO  com.luv2code.springboot.cruddemo.CruddemoApplication - Starting CruddemoApplication using Java 21.0.2 with PID 3696 (D:\IntelliJ WorkSpace\School-Project-Task\School-Project\target\classes started by Ali in D:\IntelliJ WorkSpace\School-Project-Task\School-Project)
-2024-06-23 15:56:52 DEBUG com.luv2code.springboot.cruddemo.CruddemoApplication - Running with Spring Boot v3.3.0, Spring v6.1.8
-2024-06-23 15:56:52 INFO  com.luv2code.springboot.cruddemo.CruddemoApplication - No active profile set, falling back to 1 default profile: "default"
+2024-06-23 15:56:52 INFO  com.luv2code.springboot.cruddemo.TeacherCrud - Starting CruddemoApplication using Java 21.0.2 with PID 3696 (D:\IntelliJ WorkSpace\School-Project-Task\School-Project\target\classes started by Ali in D:\IntelliJ WorkSpace\School-Project-Task\School-Project)
+2024-06-23 15:56:52 DEBUG com.luv2code.springboot.cruddemo.TeacherCrud - Running with Spring Boot v3.3.0, Spring v6.1.8
+2024-06-23 15:56:52 INFO  com.luv2code.springboot.cruddemo.TeacherCrud - No active profile set, falling back to 1 default profile: "default"
 2024-06-23 15:56:52 INFO  org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
 2024-06-23 15:56:52 INFO  org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
 2024-06-23 15:56:53 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
@@ -16,7 +16,7 @@
 2024-06-23 15:56:57 WARN  org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
 2024-06-23 15:56:58 INFO  org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer - LiveReload server is running on port 35729
 2024-06-23 15:56:58 INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
-2024-06-23 15:56:58 INFO  com.luv2code.springboot.cruddemo.CruddemoApplication - Started CruddemoApplication in 6.518 seconds (process running for 7.945)
+2024-06-23 15:56:58 INFO  com.luv2code.springboot.cruddemo.TeacherCrud - Started CruddemoApplication in 6.518 seconds (process running for 7.945)
 2024-06-23 15:57:33 INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
 2024-06-23 15:57:33 INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 2 ms
 2024-06-23 16:11:35 INFO  org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'

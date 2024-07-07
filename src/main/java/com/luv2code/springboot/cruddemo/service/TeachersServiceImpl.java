@@ -1,47 +1,50 @@
 package com.luv2code.springboot.cruddemo.service;
 
 import com.luv2code.springboot.cruddemo.dao.TeacherRepository;
-import com.luv2code.springboot.cruddemo.entity.Teachers;
+import com.luv2code.springboot.cruddemo.dto.TeacherDTO;
+import com.luv2code.springboot.cruddemo.dto.TeacherDTOConverter;
+import com.luv2code.springboot.cruddemo.dto.TeacherDTOMapper;
+import com.luv2code.springboot.cruddemo.entity.Teacher;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class TeachersServiceImpl implements TeacherService {
 
-    private TeacherRepository teacherRepository;
+    private  TeacherRepository teacherRepository;
+    private   final  TeacherDTOMapper teacherDTOMapper;
 
     @Autowired
-    public TeachersServiceImpl(TeacherRepository theTeacherRepository) {
-        teacherRepository = theTeacherRepository;
+    public TeachersServiceImpl(TeacherRepository teacherRepository, TeacherDTOMapper teacherDTOMapper) {
+        this.teacherRepository = teacherRepository;
+        this.teacherDTOMapper = teacherDTOMapper;
     }
 
     @Override
-    public List<Teachers> findAll() {
-        return teacherRepository.findAll();
+    public List<TeacherDTO> findAll() {
+        return teacherRepository.findAll()
+                .stream()
+                .map(teacherDTOMapper)
+                .collect(Collectors.toList());
     }
 
     @Override
-    public Teachers findById(int theId) {
-        Optional<Teachers> result = teacherRepository.findById(theId);
+    public TeacherDTO findById(int theId) {
+        Optional<Teacher> result = teacherRepository.findById(theId);
 
-        Teachers theTeacher = null;
-
-        if (result.isPresent()) {
-            theTeacher = result.get();
-        }
-        else {
-            throw new RuntimeException("Did not find teacher id - " + theId);
-        }
-
-        return theTeacher;
+        return result.map(teacherDTOMapper)
+                .orElseThrow(() -> new RuntimeException("Did not find teacher id - " + theId));
     }
 
     @Override
-    public Teachers save(Teachers theTeacher) {
-        return teacherRepository.save(theTeacher);
+    public TeacherDTO save(TeacherDTO theTeacherDTO) {
+        Teacher teacherEntity = TeacherDTOConverter.toTeacherEntity(theTeacherDTO);
+        Teacher savedTeacher = teacherRepository.save(teacherEntity);
+        return teacherDTOMapper.apply(savedTeacher);
     }
 
     @Override
@@ -49,7 +52,6 @@ public class TeachersServiceImpl implements TeacherService {
         teacherRepository.deleteById(theId);
     }
 }
-
 
 
 

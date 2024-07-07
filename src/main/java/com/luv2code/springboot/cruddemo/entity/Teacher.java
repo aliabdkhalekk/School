@@ -1,7 +1,6 @@
 package com.luv2code.springboot.cruddemo.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
@@ -13,8 +12,8 @@ import org.apache.logging.log4j.Logger;
 @NoArgsConstructor
 @ToString
 @Table(name = "teachers")
-public class Teachers {
-    private static final Logger logger = LogManager.getLogger(Teachers.class);
+public class Teacher {
+    private static final Logger logger = LogManager.getLogger(Teacher.class);
 
     // define fields
     @Id
@@ -38,7 +37,7 @@ public class Teachers {
     // define constructors
 //public Teachers() {}
 
-    public Teachers(int id, String firstName, String lastName, int age) {
+    public Teacher(int id, String firstName, String lastName, int age) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
