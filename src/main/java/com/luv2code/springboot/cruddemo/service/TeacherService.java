@@ -1,16 +1,17 @@
 package com.luv2code.springboot.cruddemo.service;
 
-import com.luv2code.springboot.cruddemo.entity.Teachers;
+import com.luv2code.springboot.cruddemo.dto.TeacherDTO;
+import com.luv2code.springboot.cruddemo.entity.Teacher;
 
 import java.util.List;
 
 public interface TeacherService {
 
-    List<Teachers> findAll();
+    List<TeacherDTO> findAll();
 
-    Teachers findById(int theId);
+    TeacherDTO findById(int theId);
 
-    Teachers save(Teachers theTeacher);
+    TeacherDTO save(TeacherDTO theTeacher);
 
     void deleteById(int theId);
 
